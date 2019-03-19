@@ -18,5 +18,8 @@ python manage.py migrate
 # modelをもとにmigrationを作成
 python manage.py makemigrations blog
 
+# 続いてmigrate
+python manage.py migrate blog
+
 # アプリケーションの作成
 python manage.py startapp <app>
