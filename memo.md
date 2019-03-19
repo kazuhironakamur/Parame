@@ -24,6 +24,12 @@ python manage.py migrate blog
 # アプリケーションの作成
 python manage.py startapp <app>
 
+# pythonanywhereへのデプロイ
+pa_autoconfigure_django.py https://github.com/kazuhironakamur/taby-django.git
+
+# pythonanywhereへの再デプロイ
+pa_autoconfigure_django.py --nuke https://github.com/kazuhironakamur/taby-django.git
+
 #admin
 id: wakoit
 pw: django!
