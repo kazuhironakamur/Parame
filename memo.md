@@ -2,8 +2,7 @@
 pip install -r requirements.txt
 
 # Profileの読み込み
-cd C:\django\web
-
+cd C:\django\web 
 ..\wakoit\Scripts\activate
 
 # 開発用Webサーバー起動
