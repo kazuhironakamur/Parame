@@ -23,3 +23,7 @@ python manage.py migrate blog
 
 # アプリケーションの作成
 python manage.py startapp <app>
+
+#admin
+id: wakoit
+pw: django!
