@@ -33,3 +33,7 @@ pa_autoconfigure_django.py --nuke https://github.com/kazuhironakamur/taby-django
 #admin
 id: wakoit
 pw: django!
+
+#pythonのバージョンを3.6に変更
+python 3.6をインストールしてから以下を実行
+virtualenv -p "C:\Users\nakamura_k\AppData\Local\Programs\Python\Python36-32\python.exe" taby_env
