@@ -84,8 +84,8 @@ WSGI_APPLICATION = 'taby.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangogirls',
-        'USER': 'wakoit',
+        'NAME': 'taby',
+        'USER': 'taby',
         'PASSWORD': 'NOVA=324929',
         'HOST': 'localhost',
         'PORT': '5432',
