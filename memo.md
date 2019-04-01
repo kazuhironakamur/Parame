@@ -37,3 +37,7 @@ pw: django!
 #pythonのバージョンを3.6に変更
 python 3.6をインストールしてから以下を実行
 virtualenv -p "C:\Users\nakamura_k\AppData\Local\Programs\Python\Python36-32\python.exe" taby_env
+
+# Windows環境でpostgresに接続
+psql --username=postgres
+pass: goyounaraba
