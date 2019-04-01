@@ -15,6 +15,15 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+try:
+    if os.environ['DJANGO_ENV'] == 'DEVELOP':
+        django_env_is = 'DEVELOP'
+    elif os.environ['DJANGO_ENV'] == 'LOCAL':
+        django_env_is = 'LOCAL'
+    else:
+        django_env_is = 'PRODUCTION'
+except:
+    django_env_is = 'PRODUCTION'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -23,10 +32,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5kkgx(q_4ehawhn6@3+hdwwn8pf4+m5v&q(!k%9k6a!_a^^+a1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+if django_env_is == 'DEVELOP' or django_env_is == 'LOCAL':
+    DEBUG = True
+    ALLOWED_HOSTS = []
+else:
+    DEBUG = False
+    ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 # Application definition
 
@@ -38,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'games',
 ]
 
 MIDDLEWARE = [
@@ -74,23 +86,24 @@ WSGI_APPLICATION = 'taby.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangogirls',
-        'USER': 'wakoit',
-        'PASSWORD': 'NOVA=324929',
-        'HOST': 'localhost',
-        'PORT': '5432',
+if django_env_is == 'DEVELOP' or django_env_is == 'LOCAL':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'taby',
+            'USER': 'wakoit',
+            'PASSWORD': 'NOVA=324929',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
