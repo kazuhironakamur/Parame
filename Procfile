@@ -1,1 +1,1 @@
-web: gunicorn taby.wsgi --log-file -
+web: gunicorn mysite.wsgi --log-file -

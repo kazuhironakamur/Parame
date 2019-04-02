@@ -47,3 +47,6 @@ git push heroku master
 heroku ps:scale web=1
 heroku open
 heroku logs --tail
+
+heroku run python manage.py migrate
+heroku run python manage.py createsuperuser
