@@ -41,3 +41,9 @@ virtualenv -p "C:\Users\nakamura_k\AppData\Local\Programs\Python\Python36-32\pyt
 # Windows環境でpostgresに接続
 psql --username=postgres
 pass: goyounaraba
+
+# heroku
+git push heroku master
+heroku ps:scale web=1
+heroku open
+heroku logs --tail
