@@ -24,6 +24,10 @@ python manage.py migrate blog
 # アプリケーションの作成
 python manage.py startapp <app>
 
+# django shell
+from parame.models import Project
+Project.objects.all()
+
 # pythonanywhereへのデプロイ
 pa_autoconfigure_django.py https://github.com/kazuhironakamur/taby-django.git
 

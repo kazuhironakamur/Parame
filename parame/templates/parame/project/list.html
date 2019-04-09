@@ -1,0 +1,9 @@
+{% extends 'parame/base.html' %}
+
+{% block content %}
+    <ul>
+        {% for project in projects %}
+            <a href="{% url 'sheet_list' pk=project.pk %}">{{ project.name }}</a>
+        {% endfor %}
+    </ul>
+{% endblock %}
