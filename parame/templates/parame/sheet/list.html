@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
         {% for sheet in sheets %}
-            <a>{{ sheet.name }}</a>
+            <a href="{% url 'sheet_detail' pk=sheet.project.pk sk=sheet.pk %}">{{ sheet.name }}</a>
         {% endfor %}
     </ul>
 {% endblock %}
