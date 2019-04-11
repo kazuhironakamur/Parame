@@ -1,0 +1,21 @@
+from django import forms
+from .models import Project, Sheet
+
+class ProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = (
+            'name',
+            'description',
+        )
+
+class SheetForm(forms.ModelForm):
+
+    class Meta:
+        model = Sheet
+        fields = (
+            'name',
+            'description',
+            'text',
+        )
