@@ -9,6 +9,11 @@ class testSimpleBars(unittest.TestCase):
     def setUp(self):
         pass
 
+    def test_index(self):
+        bs = SimpleBars(' '*24)
+        bs[8] = 'T'
+        self.assertEquals(bs[8], "T")
+
     def test_str(self):
         self.assertEquals(str(SimpleBars("     ")), "     ")
         self.assertEquals(str(SimpleBars("iTiTi")), "iTiTi")

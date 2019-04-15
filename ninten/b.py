@@ -25,4 +25,4 @@ for c in commands:
     elif c == "|": print(bs); bs.next()
     elif c == "!": output += chr((ord('0') + acc) % 128)
 
-print("answer: " + output)
+print("answer: " + output + "#")
