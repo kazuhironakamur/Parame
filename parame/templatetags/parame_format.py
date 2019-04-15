@@ -21,20 +21,22 @@ def tab(value):
         if max_cols_count < cols_count:
             max_cols_count = cols_count
 
-    table = '<table border="1">'
-    table += '<thead><th colspan="' + str(max_cols_count) +  '">Parameter Sheet</th><thead>'
+    table = '<table class="table table-sm table-bordered table-hover">'
+    table += '<thead class="thead-light"><th colspan="' + str(max_cols_count) +  '">Parameter Sheet</th><thead>'
     table += '<tbody>'
     for line in esc(value).splitlines():
-        row = '<tr>'
         cols_count = len(line.split('|'))
+        elm = []
         for col in line.split('|'):
             span = max_cols_count - cols_count + 1
             if span > 1:
-                row += '<td colspan="' + str(span) + '">' + col + '</td>'
+                elm.append('<td colspan="' + str(span) + '">' + col + '</td>')
             else:
-                row += '<td>' + col + '</td>'
-        row += '</tr>'
-        table += row
+                elm.append('<td>' + col + '</td>')
+        table += gen_row("".join(elm))
 
     table += '</tbody></table>'
     return mark_safe(table)
+
+def gen_row(value):
+    return '<tr>' + value + '</tr>'
