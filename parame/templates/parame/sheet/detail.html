@@ -5,7 +5,11 @@
 {% block content %}
     <h1>{{ sheet.name }}</h1>
     {{ sheet.description }}
-    {{ sheet.text|cut:"#"|linebreaks }}
+    {{ sheet.text|cut:"#" }}
+    <br />
+    <br />
+    <br />
+    {{ sheet.text|tab }}
     <br />
     <a href="{% url 'sheet_edit' pk=sheet.project.pk sk=sheet.pk %}">編集</a>
 {% endblock %}
