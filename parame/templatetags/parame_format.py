@@ -15,14 +15,26 @@ https://djangoproject.jp/doc/ja/1.0/howto/custom-template-tags.html
 def tab(value):
     esc = conditional_escape
 
+    max_cols_count = 0
+    for line in esc(value).splitlines():
+        cols_count = len(line.split('|'))
+        if max_cols_count < cols_count:
+            max_cols_count = cols_count
+
     table = '<table border="1">'
-    table += '<thead><th></th><thead>'
+    table += '<thead><th colspan="' + str(max_cols_count) +  '">Parameter Sheet</th><thead>'
     table += '<tbody>'
-    for line in value.splitlines():
-        table += '<tr>'
+    for line in esc(value).splitlines():
+        row = '<tr>'
+        cols_count = len(line.split('|'))
         for col in line.split('|'):
-            table += '<td>' + col + '</td>'
-        table += '</tr>'
+            span = max_cols_count - cols_count + 1
+            if span > 1:
+                row += '<td colspan="' + str(span) + '">' + col + '</td>'
+            else:
+                row += '<td>' + col + '</td>'
+        row += '</tr>'
+        table += row
 
     table += '</tbody></table>'
     return mark_safe(table)
