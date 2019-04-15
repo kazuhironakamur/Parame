@@ -1,9 +1,11 @@
 {% extends 'parame/base.html' %}
 
+{% load parame_format %}
+
 {% block content %}
     <h1>{{ sheet.name }}</h1>
     {{ sheet.description }}
-    {{ sheet.text|linebreaks }}
+    {{ sheet.text|cut:"#"|linebreaks }}
     <br />
     <a href="{% url 'sheet_edit' pk=sheet.project.pk sk=sheet.pk %}">編集</a>
 {% endblock %}
