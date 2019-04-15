@@ -15,6 +15,14 @@ https://djangoproject.jp/doc/ja/1.0/howto/custom-template-tags.html
 def tab(value):
     esc = conditional_escape
 
-    return mark_safe('<table border="1"><thead><th></th></thead><tbody><tr><td>' +
-        esc(value) +
-        '</td></tr></tbody></table>')
+    table = '<table border="1">'
+    table += '<thead><th></th><thead>'
+    table += '<tbody>'
+    for line in value.splitlines():
+        table += '<tr>'
+        for col in line.split('|'):
+            table += '<td>' + col + '</td>'
+        table += '</tr>'
+
+    table += '</tbody></table>'
+    return mark_safe(table)
