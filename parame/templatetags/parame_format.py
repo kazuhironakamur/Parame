@@ -49,18 +49,23 @@ def parse_row(line, max_col_count):
     
     split_line = line.split('|')
     cols_count = len(split_line)
+    pan = max_col_count - cols_count + 1
+    
     elm = []
     for col in split_line:
-        pan = max_col_count - cols_count + 1
         
         if sharp_count > 0 and pan > 1:
             elm.append('<td colspan="' + str(pan) + '" class="ps' + str(sharp_count) + '">')
+            sharp_count = pan = 0
         elif pan > 1:
             elm.append('<td colspan="' + str(pan) + '">')
+            sharp_count = pan = 0
         elif sharp_count > 0:
             elm.append('<td class="ps' + str(sharp_count) + '">')
+            sharp_count = pan = 0
         else:
             elm.append('<td>')
+            sharp_count = pan = 0
         
         elm.append(esc(col))
         elm.append('</td>')
