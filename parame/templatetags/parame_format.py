@@ -43,7 +43,6 @@ def gen_div(value):
 
     sharps_count = 0
     for v in value:
-        print(v + ', ' + str(sharps_count))
         if v == '#':
             sharps_count += 1
         else:
