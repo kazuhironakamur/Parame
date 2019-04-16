@@ -44,3 +44,7 @@ h1, h2, h3, h4 {
 }
 
 body { padding-top: 70px; }
+
+.ps1 { text-indent: 0em; }
+.ps2 { text-indent: 2em; }
+.ps3 { text-indent: 4em; }
