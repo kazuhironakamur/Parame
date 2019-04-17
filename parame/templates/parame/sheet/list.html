@@ -6,4 +6,5 @@
             <a href="{% url 'sheet_detail' pk=sheet.project.pk sk=sheet.pk %}">{{ sheet.name }}</a>
         {% endfor %}
     </ul>
+    <a href="{% url 'project_list' %}">戻る</a>
 {% endblock %}

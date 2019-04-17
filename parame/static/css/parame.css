@@ -46,5 +46,17 @@ h1, h2, h3, h4 {
 body { padding-top: 70px; }
 
 .ps1 { text-indent: 0em; }
-.ps2 { text-indent: 2em; }
-.ps3 { text-indent: 4em; }
+.ps2 { text-indent: 1em; }
+.ps3 { text-indent: 2em; }
+.ps4 { text-indent: 3em; }
+.ps5 { text-indent: 4em; }
+.ps6 { text-indent: 5em; }
+.ps7 { text-indent: 6em; }
+.ps8 { text-indent: 7em; }
+.ps9 { text-indent: 8em; }
+.ps10 { text-indent: 9em; }
+.ps11 { text-indent: 10em; }
+.ps12 { text-indent: 11em; }
+.ps13 { text-indent: 12em; }
+.ps14 { text-indent: 13em; }
+.ps15 { text-indent: 14em; }
