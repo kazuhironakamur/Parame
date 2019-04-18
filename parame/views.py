@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 @login_required
 def project_list(request):
-    projects = Project.objects.all
+    projects = Project.objects.filter(owner=request.user.id)
     return render(request, 'parame/project/list.html', {'projects': projects})
 
 def sheet_list(request, pk):
