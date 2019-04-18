@@ -20,6 +20,7 @@ class Sheet(models.Model):
     description = models.TextField()
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    
+    owner = models.IntegerField(default=1)
+
     def __str__(self):
         return self.name
