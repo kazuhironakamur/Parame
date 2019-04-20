@@ -11,16 +11,31 @@ def project_list(request):
     return render(request, 'parame/project/list.html', {'projects': projects})
 
 @login_required
+def project_new(request):
+    if request.method == "POST":
+        form = ProjectForm(request.POST)
+        
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.owner = request.user.id
+            project.save()
+            return redirect('project_list')
+
+    else:
+        form = ProjectForm()
+    
+    return render(request, 'parame/project/edit.html', {'form': form})
+
+
+@login_required
 def project_edit(request, pk):
     project = get_object_or_404(Project, pk=pk)
     project.owner = request.user.id
     if request.method == "POST":
         form = ProjectForm(request.POST, instance=project)
-        print(form)
         if form.is_valid():
             project = form.save(commit=False)
             project.save()
-            #return redirect('project_detail', pk=project.project)
             return redirect('project_list')
     else:
         form = ProjectForm(instance=project)
