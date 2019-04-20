@@ -10,6 +10,7 @@ def project_list(request):
     projects = Project.objects.filter(owner=request.user.id)
     return render(request, 'parame/project/list.html', {'projects': projects})
 
+@login_required
 def project_edit(request, pk):
     project = get_object_or_404(Project, pk=pk)
     project.owner = request.user.id
