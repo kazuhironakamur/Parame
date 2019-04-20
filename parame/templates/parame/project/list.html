@@ -4,6 +4,7 @@
     <ul>
         {% for project in projects %}
             <a href="{% url 'sheet_list' pk=project.pk %}">{{ project.name }}</a>
+            <a href="{% url 'project_edit' pk=project.pk %}">編集</a>
         {% endfor %}
     </ul>
 {% endblock %}
