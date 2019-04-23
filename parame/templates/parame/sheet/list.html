@@ -1,6 +1,7 @@
 {% extends 'parame/base.html' %}
 
 {% block content %}
+    <a href="{% url 'sheet_new' pk=project.pk %}">新規作成</a>
     <ul>
         {% for sheet in sheets %}
             <a href="{% url 'sheet_detail' pk=sheet.project.pk sk=sheet.pk %}">{{ sheet.name }}</a>

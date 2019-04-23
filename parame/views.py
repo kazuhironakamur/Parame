@@ -26,7 +26,6 @@ def project_new(request):
     
     return render(request, 'parame/project/edit.html', {'form': form})
 
-
 @login_required
 def project_edit(request, pk):
     project = get_object_or_404(Project, pk=pk)
@@ -42,15 +41,36 @@ def project_edit(request, pk):
     return render(request, 'parame/project/edit.html', {'form': form})
 
 def sheet_list(request, pk):
+    project = Project.objects.get(id=pk)
     sheets = Sheet.objects.filter(project=pk)
-    return render(request, 'parame/sheet/list.html', {'sheets': sheets})
+    return render(request, 'parame/sheet/list.html', {'project': project, 'sheets': sheets})
+
+@login_required
+def sheet_new(request, pk):
+    if request.method == "POST":
+        form = SheetForm(request.POST)
+        
+        if form.is_valid():
+            project = Project.objects.get(id=pk)
+            
+            sheet = form.save(commit=False)
+            sheet.project = project
+            sheet.owner = request.user.id
+            sheet.save()
+            return redirect('project_list')
+
+    else:
+        form = SheetForm()
+    
+    return render(request, 'parame/sheet/edit.html', {'form': form})
+
 
 def sheet_detail(request, pk, sk):
     sheet = get_object_or_404(Sheet, pk=sk)
     return render(request, 'parame/sheet/detail.html', {'sheet': sheet})
 
 def sheet_edit(request, pk, sk):
-    sheet = get_object_or_404(Sheet, pk=pk)
+    sheet = get_object_or_404(Sheet, pk=sk)
     sheet.owner = request.user.id
     if request.method == "POST":
         form = SheetForm(request.POST, instance=sheet)
