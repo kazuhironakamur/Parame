@@ -18,5 +18,4 @@ class SheetForm(forms.ModelForm):
             'name',
             'description',
             'text',
-            'owner',
         )

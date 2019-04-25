@@ -40,6 +40,7 @@ def project_edit(request, pk):
         form = ProjectForm(instance=project)
     return render(request, 'parame/project/edit.html', {'form': form})
 
+@login_required
 def sheet_list(request, pk):
     project = Project.objects.get(id=pk)
     sheets = Sheet.objects.filter(project=pk)
@@ -57,18 +58,19 @@ def sheet_new(request, pk):
             sheet.project = project
             sheet.owner = request.user.id
             sheet.save()
-            return redirect('project_list')
+            return redirect('sheet_list', pk=project.id)
 
     else:
         form = SheetForm()
     
     return render(request, 'parame/sheet/edit.html', {'form': form})
 
-
+@login_required
 def sheet_detail(request, pk, sk):
     sheet = get_object_or_404(Sheet, pk=sk)
     return render(request, 'parame/sheet/detail.html', {'sheet': sheet})
 
+@login_required
 def sheet_edit(request, pk, sk):
     sheet = get_object_or_404(Sheet, pk=sk)
     sheet.owner = request.user.id
