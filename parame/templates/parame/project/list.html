@@ -1,12 +1,24 @@
 {% extends 'parame/base.html' %}
 
 {% block content %}
-    <a href="{% url 'project_new' %}">新規作成</a>
-    <ul>
-        {% for project in projects %}
-            <a href="{% url 'sheet_list' pk=project.pk %}">{{ project.name }}</a>
-            <a href="{% url 'project_edit' pk=project.pk %}">編集</a>
-            <br />
-        {% endfor %}
+    <ul class="row">
+        <a class="btn btn-primary" href="{% url 'project_new' %}">新規作成</a>
+    </ul>
+    <table class="table">
+        <thead class="thead">
+            <th scope="col">Project Name</th>
+            <th scope="col">Action</th>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+            <tr>
+                <td scope="col"><a href="{% url 'sheet_list' pk=project.pk %}">{{ project.name }}</a></td>
+                <td scope="col"><a class="btn btn-outline-secondary" href="{% url 'project_edit' pk=project.pk %}">編集</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ul class="row">
+        <a class="btn btn-primary" href="{% url 'project_new' %}">新規作成</a>
     </ul>
 {% endblock %}
