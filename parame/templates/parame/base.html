@@ -16,6 +16,14 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Project</a>
             </li>
+            {% if user.is_authenticated %}
+              <li>
+                <a href="{% url 'project_new' %}" class="nav-link"><span>new</span></a>
+              </li>
+              <li>
+                <a href="{% url 'logout' %}" class="nav-link">Log out</a>
+              </li>
+            {% endif %}
           </ul>
         </div>
       </nav>
