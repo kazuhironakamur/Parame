@@ -55,7 +55,12 @@ pass: goyounaraba
 heroku cliをinstall
 heroku login
 heroku apps
+
 heroku git:clone --app <app name>
+これだと、git pushしたときにherokuに上がってしまうからダメ。
+
+github等からcloneした後に以下のコマンドで良い感じになる。
+heroku git:remote --app <app name>
 
 git push heroku master
 heroku ps:scale web=1
