@@ -21,11 +21,15 @@ python manage.py makemigrations blog
 # 続いてmigrate
 python manage.py migrate blog
 
+# DBの初期化
+やっちゃダメ。
+python manage.py flush
+
 # アプリケーションの作成
 python manage.py startapp <app>
 
 # django shell
-from parame.models import Project
+from parame.models import Project, Sheet
 Project.objects.all()
 
 # pythonanywhereへのデプロイ
