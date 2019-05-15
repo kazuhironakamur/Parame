@@ -51,6 +51,12 @@ psql --username=postgres
 pass: goyounaraba
 
 # heroku
+
+heroku cliをinstall
+heroku login
+heroku apps
+heroku git:clone --app <app name>
+
 git push heroku master
 heroku ps:scale web=1
 heroku open
