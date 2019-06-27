@@ -1,11 +1,23 @@
 {% extends 'parame/base.html' %}
 
 {% block content %}
-    <a href="{% url 'sheet_new' pk=project.pk %}">新規作成</a>
-    <ul>
-        {% for sheet in sheets %}
-            <a href="{% url 'sheet_detail' pk=sheet.project.pk sk=sheet.pk %}">{{ sheet.name }}</a>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'project_list' %}">戻る</a>
+    <div class="flex-container">
+        <div class="flex-item">
+            <header>
+                <a class="btn btn-primary" href="{% url 'sheet_new' pk=project.pk %}">新規作成</a>
+            </header>
+    
+            <div class="content">
+                {% for sheet in sheets %}
+                    <div class="sheet">
+                        <a href="{% url 'sheet_detail' pk=sheet.project.pk sk=sheet.pk %}">{{ sheet.name }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+    
+            <footer>
+                <a class="btn btn-outline-secondary" href="{% url 'project_list' %}">戻る</a>
+            </footer>
+        </div>
+    </div>
 {% endblock %}
